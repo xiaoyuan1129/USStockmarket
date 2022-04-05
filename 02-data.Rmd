@@ -1,2 +1,31 @@
 # Data sources
 
+
+## Import Data
+
+```{r}
+library(tidyverse)
+data_path <- "C:/Users/weili/Desktop/G5293/Final Project/Final_Project.xlsx"
+readxl::excel_sheets(path = data_path)
+
+SP500 <- readxl::read_excel(path=data_path,sheet=1)
+Energy <- readxl::read_excel(path=data_path,sheet=2)
+Info_tech <- readxl::read_excel(path=data_path,sheet=3)
+Fin <-readxl::read_excel(path=data_path,sheet=4)
+Health_care <- readxl::read_excel(path=data_path,sheet=5)
+Consumer_D <- readxl::read_excel(path=data_path,sheet=6)
+Utility <- readxl::read_excel(path=data_path,sheet=7)
+Consumer_S <- readxl::read_excel(path=data_path,sheet=8)
+Industrials <- readxl::read_excel(path=data_path,sheet=9)
+Commu_Services <- readxl::read_excel(path=data_path,sheet=10)
+Materials <- readxl::read_excel(path=data_path,sheet=11)
+Real_Estate <- readxl::read_excel(path=data_path,sheet=12)
+```
+
+Pick several datasets to take a brief look at:
+
+```{r}
+head(SP500)
+head(Energy)
+head(Real_Estate)
+```
