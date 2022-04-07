@@ -3,6 +3,8 @@
 
 ## Import Data
 
+1) Index Price/Volulme/Return:
+
 ```{r}
 library(tidyverse)
 data_path <- "C:/Users/weili/Desktop/G5293/Final Project/Final_Project.xlsx"
@@ -28,4 +30,13 @@ Pick several datasets to take a brief look at:
 head(SP500)
 head(Energy)
 head(Real_Estate)
+```
+
+2) S&P500 Constituents Financials:
+
+```{r}
+SP500_comp <- read.csv("C:/Users/weili/Desktop/G5293/Final Project/constituents_financials.csv")
+SP500_sector <- readxl::read_xlsx("C:/Users/weili/Desktop/G5293/Final Project/500-sector-representation.xlsx",skip=3)
+head(SP500_sector)
+print(colnames(SP500_sector))
 ```

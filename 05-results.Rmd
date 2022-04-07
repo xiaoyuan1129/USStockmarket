@@ -27,6 +27,30 @@ g2 <- ggplot(Return_df,aes(Return))+
 g2
 ```
 
+```{r}
+g3 <- ggplot(Return_df,aes(Return,Sector))+
+  geom_boxplot()+
+  labs(title="",
+       x="Return (%)")+
+  theme_grey(12)
+g3
+```
+
+```{r}
+library(ggridges)
+g4 <- ggplot(Return_df,aes(x=Return,y=reorder(Sector,-Return,median)))+
+  geom_density_ridges(fill="blue",alpha=0.5)+
+  labs(title="",
+       y="Sector",
+       x="Return (%)")
+g4
+```
+
+```{r}
+g5 <- ggplot(USStock_Return,aes(R_SP500,R_Infotech))+
+  geom_point()
+g5
+```
 
 ```{r}
 head(USStock_Price)

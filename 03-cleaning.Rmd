@@ -1,5 +1,6 @@
 # Data transformation
 
+1) Index Price/Volulme/Return:
 
 ## Rename column names
 
@@ -47,4 +48,13 @@ USStock_Volume <- USStock%>%
   select(Date,starts_with("V_"))
 USStock_Return <- USStock%>%
   select(Date,starts_with("R_"))
+```
+
+
+2) S&P500 Constituents Financials:
+
+```{r}
+head(SP500_comp)
+
+head(SP500_sector)
 ```
