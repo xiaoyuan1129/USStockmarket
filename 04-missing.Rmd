@@ -1,1 +1,15 @@
 # Missing values
+
+```{r}
+library(mi)
+
+sum(is.na.data.frame(USStock))
+
+stock_df <- as.data.frame(USStock)%>%
+  select(-Date)
+x <- missing_data.frame(stock_df)
+
+image(x)
+```
+
+There is no missing value in our dataset, no need to process.
