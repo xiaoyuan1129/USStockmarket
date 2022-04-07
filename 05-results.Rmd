@@ -1,1 +1,51 @@
 # Results
+
+Start to explore
+
+```{r}
+library(tidyverse)
+library(viridis)
+Return_df <- pivot_longer(USStock_Return,!Date,
+                         names_to = "Sector",
+                         values_to = "Return")%>%
+  group_by(Sector)
+
+g1 <- ggplot(Return_df,aes(x=Date,y=Return,color=Sector))+
+  geom_line()+
+  labs(title = "US Stock Market Performance in the past 5 years",
+       y="Return(%)")+
+  theme_grey(12)+
+  theme(legend.title = element_blank())
+g1
+```
+
+
+```{r}
+g2 <- ggplot(Return_df,aes(Return))+
+  geom_histogram(color = "blue", fill = "lightblue")+
+  facet_wrap(~Sector,scales = "free_x")
+g2
+```
+
+
+```{r}
+head(USStock_Price)
+tail(USStock_Price)
+
+start_date <- "2017-01-06"
+
+
+```
+
+Info-tech perform best. 
+
+
+### Specific Industry Analysis
+
+
+
+```{r}
+#Company correlation
+
+
+```
