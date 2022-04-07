@@ -1,1 +1,50 @@
 # Data transformation
+
+
+## Rename column names
+
+Rename colnames to help distinguih
+
+```{r}
+colnames(SP500) <- c("Date","P_SP500","V_SP500","R_SP500")
+colnames(Commu_Services) <- c("Date","P_CommuSer","V_CommuSer","R_CommuSer")
+colnames(Consumer_D) <- c("Date","P_ConsumerD","V_ConsumerD","R_ConsumerD")
+colnames(Consumer_S) <- c("Date","P_ConsumerS","V_ConsumerS","R_ConsumerS")
+colnames(Energy) <- c("Date","P_Energy","V_Energy","R_Energy")
+colnames(Fin) <- c("Date","P_Fin","V_Fin","R_Fin")
+colnames(Health_care) <- c("Date","P_Health","V_Health","R_Health")
+colnames(Industrials) <- c("Date","P_Industrial","V_Industrial","R_Industrial")
+colnames(Info_tech) <- c("Date","P_Infotech","V_Infotech","R_Infotech")
+colnames(Materials) <- c("Date","P_Materials","V_Materials","R_Materials")
+colnames(Real_Estate) <- c("Date","P_RealEstate","V_RealEstate","R_RealEstate")
+colnames(Utility) <- c("Date","P_Utility","V_Utility","R_Utility")
+```
+
+## Merge into one dataset 
+
+```{r}
+USStock <- SP500%>%
+  left_join(Commu_Services,by="Date")%>%
+  left_join(Consumer_D,by="Date")%>%
+  left_join(Consumer_S,by="Date")%>%
+  left_join(Energy,by="Date")%>%
+  left_join(Fin,by="Date")%>%
+  left_join(Health_care,by="Date")%>%
+  left_join(Industrials,by="Date")%>%
+  left_join(Info_tech,by="Date")%>%
+  left_join(Materials,by="Date")%>%
+  left_join(Real_Estate,by="Date")%>%
+  left_join(Utility,by="Date")
+```
+
+
+## Seperate Price and Volume Data
+
+```{r}
+USStock_Price <- USStock%>%
+  select(Date,starts_with("P_"))
+USStock_Volume <- USStock%>%
+  select(Date,starts_with("V_"))
+USStock_Return <- USStock%>%
+  select(Date,starts_with("R_"))
+```
