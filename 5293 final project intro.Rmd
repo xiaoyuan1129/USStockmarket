@@ -1,0 +1,10 @@
+---
+title: "5293 final project"
+output: html_document
+---
+
+## Introduciton 
+
+In the financial market, S&P500 is always one of the index that could reflect the whole market performance. By having a general knowledge of what is S&P500, here is the official explanation of it:The S&P 500 Index features 500 leading U.S. publicly traded companies, with a primary emphasis on market capitalization. The market-capitalization-weighted index of 500 leading publicly traded companies in the U.S. And it is not an exact list of the top 500 U.S. companies by market cap because there are other criteria that the index includes. And usually people whatever doing investment or doing business would refer the index of the whole market to make decisions. Therefore the SP500 is a diversified basket of an entire market including each different sectors in the market. Since there are different companies including different sectors in the SP500, therefore, we are curious on how each sectors interact with the whole financial market. And how they effect the whole market. 
+
+This topic especially interested for both of the two of us is because we are financial-related backgrounds and in the daily life, we invest money in the stock market therefore the questions that interested us also would facilitate us with our daily investing and learn in depth would give us a more general overview.
