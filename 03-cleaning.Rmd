@@ -99,6 +99,13 @@ head(SP500_comp)
 head(SP500_sector)
 ```
 
-```{r}
+Rename column 
 
+```{r}
+SP500_sector <- SP500_sector%>%
+  rename("Sector"="MARKET REPRESENTATION",
+         "election_1"="election...6",
+         "election_2"="election...9")%>%
+  head(-2)
+colnames(SP500_sector) <- gsub(" ","_",colnames(SP500_sector))
 ```

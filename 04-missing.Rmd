@@ -38,10 +38,14 @@ sum(is.na.data.frame(SP500_sector))
 
 colSums(is.na(SP500_sector))
 
+SP500_sector2 <- SP500_sector[,-1]
+rownames(SP500_sector2) <- SP500_sector[,1])
+
 tidysector <- SP500_sector %>% 
-    rownames_to_column("id") %>% 
-    gather(key, value, -id) %>% 
-    mutate(missing = ifelse(is.na(value), "yes", "no"))
+    remove_rownames()%>%
+    rownames_to_column(var = "names")
+    #gather(key, value, -Sector) %>% 
+    #mutate(missing = ifelse(is.na(value), "yes", "no"))
 head(tidysector)
 
 ggplot(tidysector, aes(x = key, y = fct_rev(id), fill = missing)) +
