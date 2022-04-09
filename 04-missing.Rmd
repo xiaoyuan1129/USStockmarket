@@ -1,5 +1,8 @@
 # Missing values
 
+
+## US Stock
+
 ```{r}
 library(mi)
 
@@ -7,9 +10,40 @@ sum(is.na.data.frame(USStock))
 
 stock_df <- as.data.frame(USStock)%>%
   select(-Date)
-x <- missing_data.frame(stock_df)
+x1 <- missing_data.frame(stock_df)
 
-image(x)
+image(x1)
 ```
 
-There is no missing value in our dataset, no need to process.
+There is no missing value in 'USStock market data', no need to process.
+
+## SP500 Constitutent
+
+```{r}
+sum(is.na.data.frame(SP500_comp))
+
+colSums(is.na(SP500_comp))
+
+SP500_comp_df <- as.data.frame(SP500_comp)
+x2 <- missing_data.frame(SP500_comp_df)
+
+image(x2)
+```
+
+
+
+```{r}
+
+sum(is.na.data.frame(SP500_sector))
+
+colSums(is.na(SP500_sector))
+
+tidysector <- SP500_sector %>% 
+    rownames_to_column("id") %>% 
+    gather(key, value, -id) %>% 
+    mutate(missing = ifelse(is.na(value), "yes", "no"))
+head(tidysector)
+
+ggplot(tidysector, aes(x = key, y = fct_rev(id), fill = missing)) +
+  geom_tile(color = "white") 
+```

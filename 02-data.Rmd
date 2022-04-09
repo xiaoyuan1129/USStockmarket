@@ -1,42 +1,14 @@
 # Data sources
 
+1) Database: Bloomberg
 
-## Import Data
+Use School's Bloomberg terminal to download market data of differenct stocks and sector index. 
 
-1) Index Price/Volulme/Return:
 
-```{r}
-library(tidyverse)
-data_path <- "C:/Users/weili/Desktop/G5293/Final Project/Final_Project.xlsx"
-readxl::excel_sheets(path = data_path)
+2) SP500 Constitutents:
 
-SP500 <- readxl::read_excel(path=data_path,sheet=1)
-Energy <- readxl::read_excel(path=data_path,sheet=2)
-Info_tech <- readxl::read_excel(path=data_path,sheet=3)
-Fin <-readxl::read_excel(path=data_path,sheet=4)
-Health_care <- readxl::read_excel(path=data_path,sheet=5)
-Consumer_D <- readxl::read_excel(path=data_path,sheet=6)
-Utility <- readxl::read_excel(path=data_path,sheet=7)
-Consumer_S <- readxl::read_excel(path=data_path,sheet=8)
-Industrials <- readxl::read_excel(path=data_path,sheet=9)
-Commu_Services <- readxl::read_excel(path=data_path,sheet=10)
-Materials <- readxl::read_excel(path=data_path,sheet=11)
-Real_Estate <- readxl::read_excel(path=data_path,sheet=12)
-```
+https://datahub.io/core/s-and-p-500-companies-financials#resource-constituents-financials
 
-Pick several datasets to take a brief look at:
 
-```{r}
-head(SP500)
-head(Energy)
-head(Real_Estate)
-```
 
-2) S&P500 Constituents Financials:
-
-```{r}
-SP500_comp <- read.csv("C:/Users/weili/Desktop/G5293/Final Project/constituents_financials.csv")
-SP500_sector <- readxl::read_xlsx("C:/Users/weili/Desktop/G5293/Final Project/500-sector-representation.xlsx",skip=3)
-head(SP500_sector)
-print(colnames(SP500_sector))
-```
+https://www.spglobal.com/spdji/en/indices/equity/sp-500/#overview
