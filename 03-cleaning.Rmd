@@ -108,4 +108,6 @@ SP500_sector <- SP500_sector%>%
          "election_2"="election...9")%>%
   head(-2)
 colnames(SP500_sector) <- gsub(" ","_",colnames(SP500_sector))
+
+SP500_sector <- SP500_sector[SP500_sector$Sector !="S&P 500",]
 ```

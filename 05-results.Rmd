@@ -46,11 +46,6 @@ g4 <- ggplot(Return_df,aes(x=Return,y=reorder(Sector,-Return,median)))+
 g4
 ```
 
-```{r}
-g5 <- ggplot(USStock_Return,aes(R_SP500,R_Infotech))+
-  geom_point()
-g5
-```
 
 ```{r}
 head(USStock_Price)
@@ -62,6 +57,39 @@ start_date <- "2017-01-06"
 ```
 
 Info-tech perform best. 
+
+
+### SP500 Constitutent
+
+```{r}
+head(SP500_comp)
+
+```
+
+```{r}
+library(treemap)
+head(SP500_sector)
+
+#Treemap of 2021 Sector Composition
+treemap(SP500_sector,index="Sector",vSize="2021",title = "SP500 Constituent in 2021")
+```
+```{r}
+library(ggalluvial)
+
+SP500_sector_year <- SP500_sector%>%
+  select(c("Sector","1989","1999","2009","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021"))%>%
+  to_lodes_form(axes = 2:15)
+
+al_plot <- ggplot(SP500_sector_year,aes(alluvium=Sector,x=x,stratum=stratum))+
+  geom_flow(aes(fill=Sector),width=1/12)+
+  geom_stratum(color="black")+
+ # geom_text(stat = "stratum",aes(label=paste(after_stat(stratum),"\n",after_stat(count))))+
+  scale_y_continuous(expand = c(0.01,0))+
+  theme_classic()
+al_plot
+```
+
+
 
 
 ### Specific Industry Analysis
