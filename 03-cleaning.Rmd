@@ -110,4 +110,7 @@ SP500_sector <- SP500_sector%>%
 colnames(SP500_sector) <- gsub(" ","_",colnames(SP500_sector))
 
 SP500_sector <- SP500_sector[SP500_sector$Sector !="S&P 500",]
+
+
+
 ```

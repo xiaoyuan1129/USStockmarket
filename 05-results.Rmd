@@ -75,23 +75,55 @@ treemap(SP500_sector,index="Sector",vSize="2021",title = "SP500 Constituent in 2
 ```
 ```{r}
 library(ggalluvial)
+library(scales)
 
 SP500_sector_year <- SP500_sector%>%
   select(c("Sector","1989","1999","2009","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021"))%>%
-  to_lodes_form(axes = 2:15)
+  mutate(Sector=c("EN","M","I","CD","CS","HC","F","IT","CoS","U","RE"))
 
-al_plot <- ggplot(SP500_sector_year,aes(alluvium=Sector,x=x,stratum=stratum))+
+SP500_sector_year[,names(SP500_sector_year)!="Sector"]<- sapply(SP500_sector_year[,names(SP500_sector_year)!="Sector"],function(x) percent(x, accuracy=1))
+
+
+gg_SP500_sector_year <- SP500_sector_year%>%
+  to_lodes_form(axes=2:15)
+
+al_plot <- ggplot(gg_SP500_sector_year,aes(alluvium=Sector,x=x,stratum=stratum))+
   geom_flow(aes(fill=Sector),width=1/12)+
   geom_stratum(color="black")+
- # geom_text(stat = "stratum",aes(label=paste(after_stat(stratum),"\n",after_stat(count))))+
+  geom_text(stat = "stratum",aes(label=paste(after_stat(stratum))))+
   scale_y_continuous(expand = c(0.01,0))+
   theme_classic()
 al_plot
 ```
 
+```{r,echo=FALSE, fig.width = 10, fig.asp = .62}
+library(vcd)
+
+SP500_sector_situation <- SP500_sector%>%
+  select(c("Sector","2021","2020","covid_low","election_1","pre-covid_hi"))%>%
+  mutate(Sector=c("EN","M","I","CD","CS","HC","F","IT","CoS","U","RE"))
+
+
+tidy_situation <- SP500_sector_situation%>%
+  gather(key="Group",value="Freq",-Sector)
+
+tidy_situation$Group <- fct_rev(tidy_situation$Group)
+
+mosaic(Group~Sector, direction=c("h","v"),tidy_situation,
+       highlighting_fill = c("grey80","cornflowerblue","lightblue","darkseagreen2","lightpink"))
+
+```
 
 
 
+```{r}
+library(ggmosaic)
+
+
+g5 <- ggplot(data=tidy_situation)+
+  geom_mosaic(aes(x=product(Sector,Group),fill=Freq))
+g5
+```
 ### Specific Industry Analysis
 
 
