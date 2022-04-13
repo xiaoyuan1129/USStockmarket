@@ -114,16 +114,6 @@ mosaic(Group~Sector, direction=c("h","v"),tidy_situation,
 
 ```
 
-
-
-```{r}
-library(ggmosaic)
-
-
-g5 <- ggplot(data=tidy_situation)+
-  geom_mosaic(aes(x=product(Sector,Group),fill=Freq))
-g5
-```
 ### Specific Industry Analysis
 
 
